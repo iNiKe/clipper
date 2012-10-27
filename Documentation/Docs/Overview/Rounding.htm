@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    
+  <script type="text/javascript" src="../../Scripts/jquery.js">
+  </script>
+    
+  <script type="text/javascript" src="../../Scripts/SyntaxHighlighter/scripts/shCore.js">
+  </script>
+    
+  <script type="text/javascript" src="../../Scripts/SyntaxHighlighter/scripts/shBrushDelphi.js">
+  </script>
+    
+  <link type="text/css" rel="stylesheet" href="../../Scripts/SyntaxHighlighter/styles/shCore.css">
+    
+  <link type="text/css" rel="stylesheet" href="../../Scripts/SyntaxHighlighter/styles/shThemeDefault.css">
+  
+
+  <title>Rounding</title>  
+
+  <link rel="stylesheet" href="../../styles/Default.css" type="text/css">
+
+    
+  <script type="text/javascript" src="../../Scripts/bootstrap.js">
+  </script>
+  
+</head>
+
+<body bgcolor="#FFFFFF">
+    
+  <!-- THIS FILE HAS BEEN AUTOMATICALLY PROCESSED FROM A SOURCE COPY -->
+    
+  <!-- DO NOT EDIT MANUALLY !!! -->
+  
+  <table class="Banner" cellspacing="0" cellpadding="0" border="1" bordercolorlight="#303080" bordercolordark="#7070B0">
+    <tr>
+      <td class="Banner" nowrap=""><a href="../_Body.htm" class="Banner"><img src="../../Images/_Home.gif" align="absmiddle">Home</a>
+      </td>
+      <td class="Banner" nowrap=""><a href="_Body.htm" class="Banner">Overview</a>
+      </td>
+      <td class="Banner" width="100%" align="right"><img src="../../Images/_Project_Logo.gif" align="absmiddle">
+      </td>
+    </tr>
+  </table>
+  <h1>Rounding</h1>
+
+  <p class="Body"> By using integer coordinates for all polygons, the Clipper Library has side-stepped the thorny issue of <b>numerical robustness</b> that otherwise plagues geometric computations with floating point values. However, rounding polygon coordinates to integers has introduced its own complications.<br><br> Firstly, there's the issue of <b>precision</b>. This is easily dealt with by using scaling. To increase precision, input polygon coordinates are 'scaled up' (usually by a factor of 10) before being passed to the Clipper object, and the solution polygons returned are later scaled back down.<br><br> <img src="../../Images/clipper_rounding.png" width="488" height="365" alt="" align="left"> While all vertices have integer coordinates, points of intersection typically occur at non-integer coordinates, and consequently they have to be 'moved' (via rounding) to their closest integer coordinates. Unfortunately, this 'moving' can occasionally cause tiny <b>self-intersection artefacts</b>.<br><br> For example, in the image on the left, the area of intersection of 2 polygons is highlighted in bright green. In this unscaled image (where one unit equals one pixel), we can see that rounding has negligible affect on the clipped solution, even though a tiny self-intersecting artefact has been removed.<br><br> </p>
+
+  <p class="Body" style="clear='both'"> <img src="../../Images/clipper_rounding2.png" width="440" height="316" alt="" align="right"><br><br> This second image is a 30X 'close up' of the first image focusing on the points of intersection. The three 'black dots' highlight the actual points of intersection (with their fractional coordinates displayed). The smaller 'red dots' show where these points of intersection will be moved to when rounding is applied. With a little care you should be able to see how rounding in this example reverses the orientation of these vertices causing a 'self-intersection artefact'.<br><br> Although self-intersection artefacts are always tiny (having sub-pixel dimensions) they can cause problems if they're ignored and polygons are assumed to be 'simple' as is the case with Clipper's Orientation function.<br><br> Since Clipper's Orientation function requires the orientation of the three bottom-most vertices of a polygon to accurately reflect the orientation of the whole polygon, Clipper detects and removes any 'self-intersection artefacts' occurring at the bottom of output polygons. </p>
+
+  <p class="Body" style="clear='both'">
+  </p>
+
+    
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2012 Angus Johnson&nbsp; - &nbsp; Clipper version 4.8.8 &nbsp; - &nbsp; Help file built on 30-August-2012 <br><br> </p>
+  
+</body>
+
+</html>

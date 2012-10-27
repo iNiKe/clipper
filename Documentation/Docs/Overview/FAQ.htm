@@ -1,0 +1,156 @@
+<html>
+
+<head>
+    
+  <script type="text/javascript" src="../../Scripts/jquery.js">
+  </script>
+    
+  <script type="text/javascript" src="../../Scripts/SyntaxHighlighter/scripts/shCore.js">
+  </script>
+    
+  <script type="text/javascript" src="../../Scripts/SyntaxHighlighter/scripts/shBrushDelphi.js">
+  </script>
+    
+  <link type="text/css" rel="stylesheet" href="../../Scripts/SyntaxHighlighter/styles/shCore.css">
+    
+  <link type="text/css" rel="stylesheet" href="../../Scripts/SyntaxHighlighter/styles/shThemeDefault.css">
+  
+
+  <title>FAQ</title>  
+
+  <link rel="stylesheet" href="../../styles/Default.css" type="text/css">
+
+  <style type="text/css">	
+    <!--
+    a {text-decoration: none; font-style: bold;}
+    .default {color: #000000; background: #FFFFFF;}
+    .comment {color: #000099; background: #E9E9DA; font-weight: bold;}
+    .precompiler {color: #009900; background: #F0FFF0; font-weight: bold;}
+    .string {color: #3333FF; background: #FFFFFF; font-weight: bold;}
+    .number {color: #009900; background: #FFFFFF; font-weight: bold;}
+    .assembler {color: #CC0000; background: #FFF0F0; font-weight: bold;}
+    .symbol {color: #000000; background: #FFFFFF; font-weight: bold;}
+    .reserved {color: #000000; background: #FFFFFF; font-weight: bold;}
+    .border {border: 1px solid Silver; background: #FFFFFF; border-bottom: 1px solid Gray; border-right: 1px solid Gray;}
+--> 
+  </style>
+
+    
+  <script type="text/javascript" src="../../Scripts/bootstrap.js">
+  </script>
+  
+</head>
+
+<body bgcolor="#FFFFFF">
+    
+  <!-- THIS FILE HAS BEEN AUTOMATICALLY PROCESSED FROM A SOURCE COPY -->
+    
+  <!-- DO NOT EDIT MANUALLY !!! -->
+  
+  <table class="Banner" cellspacing="0" cellpadding="0" border="1" bordercolorlight="#303080" bordercolordark="#7070B0">
+    <tr>
+      <td class="Banner" nowrap=""><a href="../_Body.htm" class="Banner"><img src="../../Images/_Home.gif" align="absmiddle">Home</a>
+      </td>
+      <td class="Banner" nowrap=""><a href="_Body.htm" class="Banner">Overview</a>
+      </td>
+      <td class="Banner" width="100%" align="right"><img src="../../Images/_Project_Logo.gif" align="absmiddle">
+      </td>
+    </tr>
+  </table>
+  <h1>FAQ</h1>
+
+
+  <p class="Decl2">Why does Clipper use integer coordinates, not floats?</p>
+
+  <p class="Decl4">Initially Clipper did use floating point coordinates but the clipping algorithm wasn't numerically robust. Consequently, very occasionally errors occurred which prevented Clipper from returning a solution. These issues have completely resolved since swapping to integer coordinates.<br><br> </p>
+
+
+  <p class="Decl2">How do I use floating point coordinates with Clipper?</p>
+
+  <p class="Decl4">It's a simple task to multiply your floating point coordinates by a scaling factor (that's typically a power of 10 depending on the desired precision). Then with the solution polygons, divide the returned coordinates by this same scaling factor. Clipper accepts integer coordinates as large as +/-4.6 e18, so it can accommodate very large scaling factors.<br><br> </p>
+
+
+  <p class="Decl2">Does Clipper handle polygons with holes?</p>
+
+  <p class="Decl4">Polygon 'holes' are implied simply by having their orientations opposite that of their container polygons.<br><br> </p>
+
+
+  <p class="Decl2">Why are there separate fill rules for Subject and Clip polygons?</p>
+
+  <p class="Decl4"> Because users may want to use different fill rules for these polygons. However it's important to note that these fill rules apply solely within subject and clip polygons to define their respective regions. These rules aren't applied to the clip operation itself where subject and clip polygons are merged into a single solution. If you wish for a fill rule to apply to the merging of subject and clip polygons as well - typically during a UNION operation, then you should UNION all the polygons as subjects without assigning any clip polygons.<br><br> </p>
+
+
+  <p class="Decl2">Which fill rule does the boolean clipping operation use?</p>
+
+  <p class="Decl4"> Perhaps the easiest way to explain what happens during clipping is to consider the following. First the subject and clip polygons are filled using their respective fill rules. With the subject polygons, assign a winding count (WC) of +1 to any filled region and a WC of 0 to any unfilled region. Do likewise with the clip polygons. Then the following winding rules apply to the clipping operation ...<br> &nbsp;&nbsp;&diams; Intersection: add subject and clip regions and return those regions where WC == +2<br> &nbsp;&nbsp;&diams; Union: add subject and clip regions and return those regions where WC > 0<br> &nbsp;&nbsp;&diams; Difference: subtract clip from subject regions and return those regions where WC == +1<br> &nbsp;&nbsp;&diams; XOR: subtract clip from subject regions and return those regions where WC != 0<br><br> </p>
+
+
+  <p class="Decl2">Some solution polygons share a common edge. Is this a bug?</p>
+
+  <p class="Decl4"> No. However Clipper tries very hard to minimize this by merging polygons that share a common edge.<br><br> </p>
+
+
+  <p class="Decl2">I have lots of polygons that I want to 'union'. Can I do this in one operation?</p>
+
+  <p class="Decl4"> Yes. Just add all the polygons as subject polygons to the Clipper object and don't assign any clip polygons.<br><br> </p>
+
+
+  <p class="Decl2"> <img src="../../Images/kangaroo_small.png" width="292" height="292" alt="" align="right"> The <a href="../Units/ClipperLib/Routines/OffsetPolygons.htm">OffsetPolygons</a> function is returning tiny artefacts? Could this be a bug?</p>
+
+  <p class="Decl4"> The precision of the input coordinates may be a problem. The Clipper Library only operates on integer coordinates so if you need better precision than integers, scale the coordinates (eg by a factor of 10) before passing them to the OffsetPolygons function. Then it's a simple matter to reverse the scaling on the output polygons. <br><br> </p>
+
+
+  <p class="Decl2">The <a href="../Units/ClipperLib/Routines/OffsetPolygons.htm">OffsetPolygons</a> function is returning unexpected results? Could this be a bug?</p>
+
+  <p class="Decl4"> Most likely the <a href="../Units/ClipperLib/Routines/Orientation.htm">orientation</a> of the input polygons is wrong.<br><br> </p>
+
+
+  <p class="Decl2">Is there an easy way to reverse polygon orientations?</p>
+
+  <p class="Decl4"> Yes, see <a href="../Units/ClipperLib/Routines/ReversePolygons.htm">ReversePolygons</a>. <br><br> </p>
+
+
+  <p class="Decl2">My drawings contain lots of ellipses and arcs. How can I perform clipping operations or offsetting on these?</p>
+
+  <p class="Decl4"> You'll have to convert then to polygons. Many graphics libraries have 'flatten path' routines. <br><br> </p>
+
+
+  <p class="Decl2">Is it possible to get the offset of a line or a polyline?</p>
+
+  <p class="Decl4"> Yes, just convert the polyline into a 'flat' polygon. Do this by appending to the polyline a reverse copy of the polyline while avoiding duplicate coordinates at each end: c1,c2,...,cn, c(n-1),...,c2. (You don't need to append anything if there are just two vertices forming a single line.) <img src="../../Images/polyline_offset.png" width="334" height="224" alt="" align="right"> 
+    <pre class="default" style="padding-left:80px">
+<span class="reserved">var</span>
+  pts<span class="symbol">:</span> TPolygon<span class="symbol">;</span>
+  ppts<span class="symbol">:</span> TPolygons<span class="symbol">;</span>
+<span class="reserved">begin</span>
+  <span class="comment">//define the polyline ...</span>
+  setlength<span class="symbol">(</span>pts<span class="symbol">,</span> <span class="number">5</span><span class="symbol">);</span>
+  pts<span class="symbol">[</span><span class="number">0</span><span class="symbol">]</span> <span class="symbol">:=</span> IntPoint<span class="symbol">(</span><span class="number">10</span><span class="symbol">,</span><span class="number">10</span><span class="symbol">);</span>
+  pts<span class="symbol">[</span><span class="number">1</span><span class="symbol">]</span> <span class="symbol">:=</span> IntPoint<span class="symbol">(</span><span class="number">100</span><span class="symbol">,</span><span class="number">100</span><span class="symbol">);</span>
+  pts<span class="symbol">[</span><span class="number">2</span><span class="symbol">]</span> <span class="symbol">:=</span> IntPoint<span class="symbol">(</span><span class="number">150</span><span class="symbol">,</span><span class="number">100</span><span class="symbol">);</span>
+  pts<span class="symbol">[</span><span class="number">3</span><span class="symbol">]</span> <span class="symbol">:=</span> IntPoint<span class="symbol">(</span><span class="number">100</span><span class="symbol">,</span><span class="number">10</span><span class="symbol">);</span>
+  pts<span class="symbol">[</span><span class="number">4</span><span class="symbol">]</span> <span class="symbol">:=</span> IntPoint<span class="symbol">(</span><span class="number">10</span><span class="symbol">,</span><span class="number">100</span><span class="symbol">);</span>
+
+  <span class="comment">//convert the line to a 'flat' polygon ...</span>
+  len <span class="symbol">:=</span> length<span class="symbol">(</span>pts<span class="symbol">);</span>
+  setLength<span class="symbol">(</span>pts<span class="symbol">,</span> len<span class="symbol">*</span><span class="number">2</span> <span class="symbol">-</span><span class="number">2</span><span class="symbol">);</span>
+  <span class="reserved">for</span> i <span class="symbol">:=</span> <span class="number">1</span> <span class="reserved">to</span> len <span class="symbol">-</span><span class="number">2</span> <span class="reserved">do</span> pts<span class="symbol">[</span>len<span class="symbol">-</span><span class="number">1</span> <span class="symbol">+</span>i<span class="symbol">]</span> <span class="symbol">:=</span> pts<span class="symbol">[</span>len<span class="symbol">-</span><span class="number">1</span> <span class="symbol">-</span>i<span class="symbol">];</span>
+
+  <span class="comment">//do the offsetting ...</span>
+  setlength<span class="symbol">(</span>ppts<span class="symbol">,</span> <span class="number">1</span><span class="symbol">);</span>
+  ppts<span class="symbol">[</span><span class="number">0</span><span class="symbol">]</span> <span class="symbol">:=</span> pts<span class="symbol">;</span>
+  ppts <span class="symbol">:=</span> OffsetPolygons<span class="symbol">(</span>ppts<span class="symbol">,</span> <span class="number">6</span><span class="symbol">,</span> jtSquare<span class="symbol">,</span> <span class="number">0</span><span class="symbol">);</span>
+
+    </pre> <br><br> </p>
+
+
+
+  <h2 id="Auto-SeeAlso">See Also</h2>
+  <p class="Body"><a href="../Units/ClipperLib/Routines/OffsetPolygons.htm">OffsetPolygons</a>, <a href="../Units/ClipperLib/Routines/Orientation.htm">Orientation</a>, <a href="../Units/ClipperLib/Routines/ReversePolygons.htm">ReversePolygons</a></p>
+    
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2012 Angus Johnson&nbsp; - &nbsp; Clipper version 4.8.8 &nbsp; - &nbsp; Help file built on 30-August-2012 <br><br> </p>
+  
+</body>
+
+
+</html>
