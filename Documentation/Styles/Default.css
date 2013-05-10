@@ -20,7 +20,6 @@ p.Hierarchy {
 }
 
 .Code {
-  /*font-family: Arial, Helvetica, sans-serif;*/
   margin-left: 1cm; 
   margin-right: 1cm;   
   margin-top: 0px;
@@ -28,62 +27,75 @@ p.Hierarchy {
 }
 
 p.Decl {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Courier New", Courier, monospace;
   background-color: #E0E0E0;
   padding-top: 3pt;
   padding-right: 4pt;
-  padding-left: 0.75cm;
+  padding-left: 6pt;
   padding-bottom: 3pt;
   margin-left: 1cm; 
   margin-top: 0px; 
   margin-right: 0.5cm; 
   margin-bottom: 0px;
-  text-indent: -0.5cm;
 }
 
 p.Decl2 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Courier New", Courier, monospace;
   background-color: #99FF99;
   padding-top: 3pt;
   padding-right: 4pt;
-  padding-left: 0.75cm;
+  padding-left: 6pt;
   padding-bottom: 3pt;
   margin-left: 1cm; 
   margin-top: 0px; 
   margin-right: 0.5cm; 
   margin-bottom: 0px;
-  text-indent: -0.5cm;
+  font-size : 100%;
 }
 
 p.Decl3 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Courier New", Courier, monospace;
   background-color: #FFBBCC;
   padding-top: 3pt;
   padding-right: 4pt;
-  padding-left: 0.75cm;
+  padding-left: 6pt;
   padding-bottom: 3pt;
   margin-left: 1cm; 
   margin-top: 0px; 
   margin-right: 0.5cm; 
   margin-bottom: 0px;
-  text-indent: -0.5cm;
+  font-size : 100%;
 }
 
 p.Decl4 {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Verdana, Tahoma, serif;
 	padding-top: 3pt;
 	padding-right: 4pt;
-	padding-left: 0.75cm;
+	padding-left: 6pt;
 	padding-bottom: 3pt;
-	margin-left: 0.5cm;
+	margin-left: 1cm;
 	margin-top: 0px;
 	margin-right: 0.5cm;
 	margin-bottom: 0px;
 }
 
+p.Decl5 {
+  font-family: Verdana, Tahoma, serif;
+  background-color: #99FF99;
+  padding-top: 3pt;
+  padding-right: 4pt;
+  padding-left: 6pt;
+  padding-bottom: 3pt;
+  margin-left: 1cm; 
+  margin-top: 0px; 
+  margin-right: 0.5cm; 
+  margin-bottom: 0px;
+  font-size : 100%;
+}
+
 body {
   font-family: Verdana, Tahoma, serif;
-  font-size: 70%;
+  font-size: 80%;
   margin-left : 2px;
   margin-top: 2px;
   margin-right : 2px;
@@ -119,23 +131,23 @@ table {
 
 th {  
   font-family: Verdana, Arial, Helvetica, sans-serif;
-  font-size: 70%; 
-  background-color: #D0D0D0; 
+  font-size: 80%; 
+  background-color: #99FF99; 
   padding-right: 6pt; 
   padding-left: 6pt;
 }
 
 td {  
   font-family: Verdana, Arial, Helvetica, sans-serif; 
-  font-size: 70%;
+  font-size: 80%;
   background-color: #F0F0F0; 
-  padding-right: 4pt; 
-  padding-left: 4pt;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 td.White {  
   font-family: Verdana, Arial, Helvetica, sans-serif; 
-  font-size: 65%;
+  font-size: 80%;
   background-color: #FFFFFF; 
   padding-right: 4pt; 
   padding-left: 4pt;
@@ -143,7 +155,7 @@ td.White {
 
 table.Banner  { 
   color: white; 
-  font-size: 8pt;
+  font-size: 9pt;
   background-color: #9595bd; 
   margin: 1px; 
   padding: 1px, 10px; 
@@ -154,7 +166,7 @@ table.Banner  {
 
 td.Banner {
   background-color: #6060A0;
-  font-size: 8pt;
+  font-size: 9pt;
   margin: 1px; 
   padding: 1px 10px; 
 }
@@ -247,8 +259,11 @@ span.sub {
   margin-top: 0px; 
   margin-bottom: 0px; 
   margin-left: 1cm;
+  padding-left: 5px;
+  padding-right: 5px;
   padding-top: 0px; 
   padding-bottom: 0px; 
+  background-color: #F0F0F0; 
 }
 
 span.Menu {

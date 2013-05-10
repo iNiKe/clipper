@@ -11,14 +11,20 @@
   <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushDelphi.js">
   </script>
     
-  <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shCore.css">
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushCpp.js">
+  </script>
+    
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushCSharp.js">
+  </script>
+    
+  <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shCoreDefault.css">
     
   <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shThemeDefault.css">
   
 
   <title>ClipType</title>
 
-  <link rel="stylesheet" href="../../../../styles/Default.css" type="text/css">
+  <link rel="stylesheet" href="../../../../Styles/default.css" type="text/css">
 
     
   <script type="text/javascript" src="../../../../Scripts/bootstrap.js">
@@ -47,21 +53,34 @@
 
   <p class="Decl"><span class="Comment">Del.&raquo;</span> <b>type</b> TClipType = (ctIntersection, ctUnion, ctDifference, ctXor);</p>
 
-  <p class="Decl2"><span class="Comment">C++&raquo;</span> <b>enum </b>ClipType { ctIntersection, ctUnion, ctDifference, ctXor };</p>
+  <p class="Decl2"><span class="Comment">C++&nbsp;&raquo;</span> <b>enum </b>ClipType { ctIntersection, ctUnion, ctDifference, ctXor };</p>
 
-  <p class="Decl3"><span class="Comment">C#&raquo;</span> <b>public enum</b> ClipType { ctIntersection, ctUnion, ctDifference, ctXor };</p>
+  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public enum</b> ClipType { ctIntersection, ctUnion, ctDifference, ctXor };</p>
 <br>
 
 
-  <p class="Body"> <img src="../../../../Images/cliptype.png" width="175" height="200" alt=""><br><br> <img src="../../../../Images/intersection.png" width="175" height="200" alt="">&nbsp; <img src="../../../../Images/union.png" width="175" height="200" alt="">&nbsp; <img src="../../../../Images/difference.png" width="175" height="200" alt="">&nbsp; <img src="../../../../Images/xor.png" width="175" height="200" alt=""> </p>
+  <p class="Body"> There are four boolean operations - AND, OR, NOT &amp; XOR.<br><br> Given that subject and clip polygon brush 'filling' is defined both by their vertices and their respective <a href="./PolyFillType.htm">filling rules</a>, the four boolean operations can be applied to polygons to define new filling regions: 
+    <ul>
+	
+      <li>AND (intersection) - create regions where both subject <b>and</b> clip polygons are filled</li>
+	
+      <li>OR (union) - create regions where <b>either</b> subject <b>or</b> clip polygons (or both) are filled</li>
+	
+      <li>NOT (difference) - create regions where subject polygons are filled <b>except</b> where clip polygons are filled</li>
+	
+      <li>XOR (exclusive or) - create regions where <b>either</b> subject <b>or</b> clip polygons are filled <b>but not</b> where <b>both</b> are filled</li>
 
+    </ul> <br> </p>
+
+
+  <p class="Body"> <img src="../../../../Images/cliptype.png" width="175" height="200" alt=""><br> <img src="../../../../Images/intersection.png" width="175" height="200" alt="">&nbsp; <img src="../../../../Images/union.png" width="175" height="200" alt="">&nbsp; <img src="../../../../Images/difference.png" width="175" height="200" alt="">&nbsp; <img src="../../../../Images/xor.png" width="175" height="200" alt=""><br><br> All polygon clipping is performed with a <a href="../Classes/Clipper/_Body.htm">Clipper</a> object with the specific boolean operation indicated by the <em>ClipType</em> parameter passed in its <a href="../Classes/Clipper/Methods/Execute.htm">Execute</a> method. </p>
 
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a></p>
+  <p class="Body"><a href="../../../Overview/_Body.htm">Overview</a>, <a href="../Classes/Clipper/_Body.htm">Clipper</a>, <a href="../Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="PolyFillType.htm">PolyFillType</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2012 Angus Johnson&nbsp; - &nbsp; Clipper version 4.8.8 &nbsp; - &nbsp; Help file built on 30-August-2012 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.5 &nbsp; - &nbsp; Help file built on 6-May-2013 <br><br> </p>
   
 </body>
 

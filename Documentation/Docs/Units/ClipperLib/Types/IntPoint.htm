@@ -11,14 +11,20 @@
   <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushDelphi.js">
   </script>
     
-  <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shCore.css">
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushCpp.js">
+  </script>
+    
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushCSharp.js">
+  </script>
+    
+  <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shCoreDefault.css">
     
   <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shThemeDefault.css">
   
 
   <title>IntPoint</title>
 
-  <link rel="stylesheet" href="../../../../styles/Default.css" type="text/css">
+  <link rel="stylesheet" href="../../../../Styles/default.css" type="text/css">
 
     
   <script type="text/javascript" src="../../../../Scripts/bootstrap.js">
@@ -46,19 +52,21 @@
 
   <p class="Decl"><span class="Comment">Del.&raquo;</span> TIntPoint = <b>record</b> X, Y: int64; <b>end;</b></p>
 
-  <p class="Decl2"><span class="Comment">C++&raquo;</span> <b>struct</b> IntPoint { <a href="./long64.htm">long64</a> X; <a href="./long64.htm">long64</a> Y; <b>...</b> };</p>
+  <p class="Decl2"><span class="Comment">C++&nbsp;&raquo;</span> <b>struct</b> IntPoint { <a href="./long64.htm">long64</a> X; <a href="./long64.htm">long64</a> Y; <b>...</b> };</p>
 
-  <p class="Decl3"><span class="Comment">C#&raquo;</span> <b>public class</b> IntPoint { <b>public</b> Int64 X; { get; set; } <b>public</b> Int64 Y; { get; set; } <b>...</b> };</p>
+  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public class</b> IntPoint { <b>public</b> Int64 X; { get; set; } <b>public</b> Int64 Y; { get; set; } <b>...</b> };</p>
 <br>
 
+
+  <p class="Body"> The <b>IntPoint</b> structure is used to represent all vertices in the Clipper Library. The <em>integer</em> storage type has been deliberately chosen to preserve <a href="http://www.mpi-inf.mpg.de/~kettner/pub/nonrobust_cgta_06.pdf" target="_blank"><b>numerical robustness</b></a>. (Early versions of the library used floating point coordinates, but it became apparent that floating point imprecision would always cause occasional errors.)<br><br> A sequence of IntPoints are contained within a <a href="./Polygon.htm">Polygon</a> structure to represent a single polygon contour.<br><br> Users wishing to clip or offset polygons containing <em>floating point</em> coordinates need to use appropriate scaling (see notes on <a href="../../../Overview/Rounding.htm">rounding</a>) when converting these values to and from <em>IntPoints</em>. </p>
 
 
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="long64.htm">long64</a>, <a href="Polygon.htm">Polygon</a>, <a href="Polygons.htm">Polygons</a></p>
+  <p class="Body"><a href="../../../Overview/Rounding.htm">Rounding</a>, <a href="long64.htm">long64</a>, <a href="Polygon.htm">Polygon</a>, <a href="Polygons.htm">Polygons</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2012 Angus Johnson&nbsp; - &nbsp; Clipper version 4.8.8 &nbsp; - &nbsp; Help file built on 30-August-2012 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.5 &nbsp; - &nbsp; Help file built on 6-May-2013 <br><br> </p>
   
 </body>
 

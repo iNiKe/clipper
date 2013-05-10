@@ -11,14 +11,20 @@
   <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushDelphi.js">
   </script>
     
-  <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shCore.css">
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushCpp.js">
+  </script>
+    
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushCSharp.js">
+  </script>
+    
+  <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shCoreDefault.css">
     
   <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shThemeDefault.css">
   
 
   <title>Polygons</title>
 
-  <link rel="stylesheet" href="../../../../styles/Default.css" type="text/css">
+  <link rel="stylesheet" href="../../../../Styles/default.css" type="text/css">
 
     
   <script type="text/javascript" src="../../../../Scripts/bootstrap.js">
@@ -47,20 +53,23 @@
 
   <p class="Decl"><span class="Comment">Del.&raquo;</span> TPolygons = <b>array of </b><a href="./Polygon.htm">TPolygon</a>;</p>
 
-  <p class="Decl2"><span class="Comment">C++&raquo;</span> <b>typedef</b> std::vector&lt; <a href="./Polygon.htm">Polygon</a> &gt; Polygons;</p>
+  <p class="Decl2"><span class="Comment">C++&nbsp;&raquo;</span> <b>typedef</b> std::vector&lt; <a href="./Polygon.htm">Polygon</a> &gt; Polygons;</p>
 
-  <p class="Decl3"><span class="Comment">C#&raquo;</span> <b>using</b> Polygons = List&lt;List&lt; <a href="./IntPoint.htm">IntPoint</a> &gt;&gt;;</p>
+  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>using</b> Polygons = List&lt;List&lt; <a href="./IntPoint.htm">IntPoint</a> &gt;&gt;;</p>
 <br>
 
-  <p class="Body"> This structure encapsulates one or a number of outer and inner 'hole' <a href="./Polygon.htm">Polygon</a> contours (where inner polygon contours have an <a href="../Routines/Orientation.htm">Orientation</a> opposite that of outer contours).<br><br> <b>Polygons</b> can be passed to Clipper objects via the <a href="../Classes/ClipperBase/Methods/AddPolygons.htm">AddPolygons</a> method.<br><br> The <b>solution</b> parameter in Clipper's overloaded <a href="..\Classes\Clipper\Methods\Execute.htm">Execute</a> method can return either a <b>Polygons</b> structure or an <a href=".\ExPolygons.htm">ExPolygons</a> structure.<br><br> </p>
+  <p class="Body"> This structure is fundamental to the Clipper Library. It is used to provide polygon coordinate data to, and receive solutions from both clipping and offsetting operations.<br><br> Whether or not a contained polygon is a <a href="../../../Overview/_Body.htm#terminology">hole</a> is determined by its <a href="../Routines/Orientation.htm">orientation</a> (<em>NonZero</em> <a href="./PolyFillType.htm">filling rule</a>) and its location relative to other polygons (<em>EvenOdd</em> filling rule).<br><br> </p>
 <br>
+
+
+
 
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../Classes/ClipperBase/Methods/AddPolygons.htm">ClipperBase.AddPolygons</a>, <a href="../Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="ExPolygons.htm">ExPolygons</a>, <a href="IntPoint.htm">IntPoint</a>, <a href="../Routines/Orientation.htm">Orientation</a>, <a href="Polygon.htm">Polygon</a></p>
+  <p class="Body"><a href="../../../Overview/_Body.htm">Overview</a>, <a href="../Classes/Clipper/Methods/Execute.htm">Clipper.Execute</a>, <a href="../Classes/ClipperBase/Methods/AddPolygon.htm">ClipperBase.AddPolygon</a>, <a href="../Classes/ClipperBase/Methods/AddPolygons.htm">ClipperBase.AddPolygons</a>, <a href="../Routines/OffsetPolygons.htm">OffsetPolygons</a>, <a href="../Routines/Orientation.htm">Orientation</a>, <a href="IntPoint.htm">IntPoint</a>, <a href="PolyFillType.htm">PolyFillType</a>, <a href="Polygon.htm">Polygon</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2012 Angus Johnson&nbsp; - &nbsp; Clipper version 4.8.8 &nbsp; - &nbsp; Help file built on 30-August-2012 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.5 &nbsp; - &nbsp; Help file built on 6-May-2013 <br><br> </p>
   
 </body>
 

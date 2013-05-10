@@ -11,14 +11,20 @@
   <script type="text/javascript" src="../../Scripts/SyntaxHighlighter/scripts/shBrushDelphi.js">
   </script>
     
-  <link type="text/css" rel="stylesheet" href="../../Scripts/SyntaxHighlighter/styles/shCore.css">
+  <script type="text/javascript" src="../../Scripts/SyntaxHighlighter/scripts/shBrushCpp.js">
+  </script>
+    
+  <script type="text/javascript" src="../../Scripts/SyntaxHighlighter/scripts/shBrushCSharp.js">
+  </script>
+    
+  <link type="text/css" rel="stylesheet" href="../../Scripts/SyntaxHighlighter/styles/shCoreDefault.css">
     
   <link type="text/css" rel="stylesheet" href="../../Scripts/SyntaxHighlighter/styles/shThemeDefault.css">
   
 
   <title>Rounding</title>  
 
-  <link rel="stylesheet" href="../../styles/Default.css" type="text/css">
+  <link rel="stylesheet" href="../../Styles/default.css" type="text/css">
 
     
   <script type="text/javascript" src="../../Scripts/bootstrap.js">
@@ -44,15 +50,21 @@
   </table>
   <h1>Rounding</h1>
 
-  <p class="Body"> By using integer coordinates for all polygons, the Clipper Library has side-stepped the thorny issue of <b>numerical robustness</b> that otherwise plagues geometric computations with floating point values. However, rounding polygon coordinates to integers has introduced its own complications.<br><br> Firstly, there's the issue of <b>precision</b>. This is easily dealt with by using scaling. To increase precision, input polygon coordinates are 'scaled up' (usually by a factor of 10) before being passed to the Clipper object, and the solution polygons returned are later scaled back down.<br><br> <img src="../../Images/clipper_rounding.png" width="488" height="365" alt="" align="left"> While all vertices have integer coordinates, points of intersection typically occur at non-integer coordinates, and consequently they have to be 'moved' (via rounding) to their closest integer coordinates. Unfortunately, this 'moving' can occasionally cause tiny <b>self-intersection artefacts</b>.<br><br> For example, in the image on the left, the area of intersection of 2 polygons is highlighted in bright green. In this unscaled image (where one unit equals one pixel), we can see that rounding has negligible affect on the clipped solution, even though a tiny self-intersecting artefact has been removed.<br><br> </p>
 
-  <p class="Body" style="clear='both'"> <img src="../../Images/clipper_rounding2.png" width="440" height="316" alt="" align="right"><br><br> This second image is a 30X 'close up' of the first image focusing on the points of intersection. The three 'black dots' highlight the actual points of intersection (with their fractional coordinates displayed). The smaller 'red dots' show where these points of intersection will be moved to when rounding is applied. With a little care you should be able to see how rounding in this example reverses the orientation of these vertices causing a 'self-intersection artefact'.<br><br> Although self-intersection artefacts are always tiny (having sub-pixel dimensions) they can cause problems if they're ignored and polygons are assumed to be 'simple' as is the case with Clipper's Orientation function.<br><br> Since Clipper's Orientation function requires the orientation of the three bottom-most vertices of a polygon to accurately reflect the orientation of the whole polygon, Clipper detects and removes any 'self-intersection artefacts' occurring at the bottom of output polygons. </p>
+  <p class="Body"> By using an integer type for polygon coordinates, the Clipper Library has been able to avoid problems of <a href="http://www.mpi-inf.mpg.de/~kettner/pub/nonrobust_cgta_06.pdf"><b>numerical robustness</b></a> that can cause havoc with geometric computations. Problems associated with integer <b>rounding</b> and their possible solutions are discussed below.<br><br> <img src="../../Images/clipper_rounding.png" width="488" height="365" alt="" align="left"> <span class="maroon">It's important to stress at the outset that rounding causes vertices to move fractions of a unit away from their 'true' positions. Nevertheless, the resulting imprecision can be very effectively managed by appropriate scaling.</span><br><br> <span class="maroon">Very high degrees of precision can be achieved by scaling (or increasing scaling) of polygon coordinates.</span><br><br> The Clipper library accepts integer coordinate values in the range &plusmn;0x3FFFFFFFFFFFFFFF (± 4.6e+18) in order to accommodate very high degrees of precision.<br><br> Apart from the imprecision resulting from vertices being forced onto an integer grid, another complication that very occasionally arises is tiny <b>self-intersection</b> artefacts. In the unscaled image on the left (where one unit equals one pixel), the area of intersection of 2 polygons has been highlighted in bright green.<br><br> </p>
 
-  <p class="Body" style="clear='both'">
-  </p>
 
+  <p class="Body" style="clear='both'"> <img src="../../Images/clipper_rounding2.png" width="440" height="316" alt="" align="right"><br><br> A 30X 'close up' of the lower points of intersection of these same 2 polygons shows the presence of a tiny self-intersecting artefact. The three 'black dots' highlight the actual points of intersection (with their fractional coordinates displayed). The 'red dots' show where these points of intersection are located once rounding is applied. With a little care you can see that rounding reverses the orientation of these vertices and causes a tiny self-intersecting artefact.<br><br> Although these tiny self-intersections are uncommon, if it's deemed necessary, they can be removed using <a href="../Units/ClipperLib/Routines/CleanPolygons.htm">CleanPolygons</a>. <br><br> </p>
+
+
+  <p class="Body" style="clear='both'"> <img src="../../Images/clipper_rounding4.png" width="292" height="224" alt="" align="left"><br><br> In this final example, the single polygon on the left also has a tiny self-intersection. However, the clipping algorithm sees this vertex (88,50) as simply 'touching' rather than intersecting the right edge of the polygon (though only by a fraction of a unit). Since this intersection won't be detected, the clipping solution (eg following a union operation) will still contain this tiny self-intersection.<br><br> </p>
+<div style="clear='both'"></div>
+
+
+  <h2 id="Auto-SeeAlso">See Also</h2>
+  <p class="Body"><a href="../Units/ClipperLib/Routines/CleanPolygons.htm">CleanPolygons</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2012 Angus Johnson&nbsp; - &nbsp; Clipper version 4.8.8 &nbsp; - &nbsp; Help file built on 30-August-2012 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.5 &nbsp; - &nbsp; Help file built on 6-May-2013 <br><br> </p>
   
 </body>
 

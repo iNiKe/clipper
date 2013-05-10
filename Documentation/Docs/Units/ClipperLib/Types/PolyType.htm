@@ -11,14 +11,20 @@
   <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushDelphi.js">
   </script>
     
-  <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shCore.css">
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushCpp.js">
+  </script>
+    
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushCSharp.js">
+  </script>
+    
+  <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shCoreDefault.css">
     
   <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shThemeDefault.css">
   
 
   <title>PolyType</title>
 
-  <link rel="stylesheet" href="../../../../styles/Default.css" type="text/css">
+  <link rel="stylesheet" href="../../../../Styles/default.css" type="text/css">
 
     
   <script type="text/javascript" src="../../../../Scripts/bootstrap.js">
@@ -47,18 +53,20 @@
 
   <p class="Decl"><span class="Comment">Del.&raquo;</span> <b>type</b> TPolyType = (ptSubject, ptClip);</p>
 
-  <p class="Decl2"><span class="Comment">C++&raquo;</span> <b>enum</b> PolyType { ptSubject, ptClip };</p>
+  <p class="Decl2"><span class="Comment">C++&nbsp;&raquo;</span> <b>enum</b> PolyType { ptSubject, ptClip };</p>
 
-  <p class="Decl3"><span class="Comment">C#&raquo;</span> <b>public enum</b> PolyType { ptSubject, ptClip };</p>
+  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public enum</b> PolyType { ptSubject, ptClip };</p>
 <br>
+
+  <p class="Body"> Boolean (clipping) operations are mostly applied to two sets of Polygons, represented in this library as <em>subject</em> and <em>clip</em> polygons. Whenever Polygons are added to the Clipper object, they must be assigned to either subject or clip polygons.<br><br> UNION operations can be performed on one set or both sets of polygons, but all other boolean operations require both sets of polygons to derive meaningful solutions.<br><br> </p>
 
 
 
 
   <h2 id="Auto-SeeAlso">See Also</h2>
-  <p class="Body"><a href="../Classes/ClipperBase/Methods/AddPolygon.htm">ClipperBase.AddPolygon</a>, <a href="../Classes/ClipperBase/Methods/AddPolygons.htm">ClipperBase.AddPolygons</a></p>
+  <p class="Body"><a href="../Classes/ClipperBase/Methods/AddPolygon.htm">ClipperBase.AddPolygon</a>, <a href="../Classes/ClipperBase/Methods/AddPolygons.htm">ClipperBase.AddPolygons</a>, <a href="ClipType.htm">ClipType</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2012 Angus Johnson&nbsp; - &nbsp; Clipper version 4.8.8 &nbsp; - &nbsp; Help file built on 30-August-2012 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.5 &nbsp; - &nbsp; Help file built on 6-May-2013 <br><br> </p>
   
 </body>
 

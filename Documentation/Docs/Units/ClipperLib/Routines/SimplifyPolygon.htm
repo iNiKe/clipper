@@ -11,14 +11,20 @@
   <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushDelphi.js">
   </script>
     
-  <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shCore.css">
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushCpp.js">
+  </script>
+    
+  <script type="text/javascript" src="../../../../Scripts/SyntaxHighlighter/scripts/shBrushCSharp.js">
+  </script>
+    
+  <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shCoreDefault.css">
     
   <link type="text/css" rel="stylesheet" href="../../../../Scripts/SyntaxHighlighter/styles/shThemeDefault.css">
   
 
   <title>SimplifyPolygon</title>
 
-  <link rel="stylesheet" href="../../../../styles/Default.css" type="text/css">
+  <link rel="stylesheet" href="../../../../Styles/default.css" type="text/css">
 
     
   <script type="text/javascript" src="../../../../Scripts/bootstrap.js">
@@ -45,20 +51,23 @@
   <h1>SimplifyPolygon</h1>
 
 
-  <p class="Decl"><span class="Comment">Del.&raquo;</span> <b>function</b> SimplifyPolygon(<b>const</b> poly: TPolygon): TPolygons;</p>
+  <p class="Decl"><span class="Comment">Del.&raquo;</span> <b>function</b> SimplifyPolygon(<b>const</b> Poly: TPolygon; FillType: TPolyFillType = pftEvenOdd): TPolygons;</p>
 
-  <p class="Decl2"><span class="Comment"> C++&raquo;</span> <b>void</b> SimplifyPolygon(<b>const</b> Polygon &amp;in_poly, Polygons &amp;out_polys);</p>
+  <p class="Decl2"><span class="Comment"> C++&nbsp;&raquo;</span> <b>void</b> SimplifyPolygon(<b>const</b> Polygon &amp;in_poly, Polygons &amp;out_polys, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PolyFillType fillType = pftEvenOdd);</p>
 
-  <p class="Decl3"><span class="Comment">C#&raquo;</span> <b>public static</b> Polygons SimplifyPolygon(Polygon poly);</p>
+  <p class="Decl3"><span class="Comment">C#&nbsp;&nbsp;&raquo;</span> <b>public static</b> Polygons SimplifyPolygon(Polygon poly, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PolyFillType fillType = PolyFillType.pftEvenOdd);</p>
 <br>
 
 
-  <p class="Body">This function converts a self-intersecting polygon into simple polygons.</p>
-<br>
+  <p class="Body"> Removes self-intersections from the supplied polygon (by performing a boolean <em>union</em> operation using the nominated <a href="../Types/PolyFillType.htm">PolyFillType</a>).<br> Polygons with non-contiguous duplicate vertices (ie 'touching') will be split into two polygons.<br><br> C++ only: The <em>in_polys</em> and <em>out_polys</em> parameters can reference the same Polygons object.<br><br> <img src="../../../../Images/simplify.png" alt="" border="0"><br> <img src="../../../../Images/simplify2.png" alt="" border="0"> <img src="../../../../Images/simplify3.png" alt="" border="0"> </p>
 
 
+
+
+  <h2 id="Auto-SeeAlso">See Also</h2>
+  <p class="Body"><a href="../Classes/Clipper/Properties/ForceSimple.htm">Clipper.ForceSimple</a>, <a href="CleanPolygon.htm">CleanPolygon</a>, <a href="../Types/PolyFillType.htm">PolyFillType</a></p>
     
-  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2012 Angus Johnson&nbsp; - &nbsp; Clipper version 4.8.8 &nbsp; - &nbsp; Help file built on 30-August-2012 <br><br> </p>
+  <p class="Copyright" id="auto"> <br><br> Copyright &copy;2010-2013 Angus Johnson&nbsp; - &nbsp; Clipper version 5.1.5 &nbsp; - &nbsp; Help file built on 6-May-2013 <br><br> </p>
   
 </body>
 
